@@ -1,3 +1,4 @@
+//导入Input
 import { Component, OnInit ,Input} from '@angular/core';
 
 @Component({
