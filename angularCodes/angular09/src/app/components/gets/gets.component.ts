@@ -24,4 +24,7 @@ export class GetsComponent implements OnInit {
       console.log(response);
     });
   }
+  doJsonp(){
+     console.log("jsonp start..") 
+  }
 }
