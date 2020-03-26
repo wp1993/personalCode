@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+<!--    引入外部配置文件-->
+    <properties resource="db.properties">
+<!--        优先使用外部配置-->
+        <property name="username1" value="root1"/>
+    </properties>
+
+    <settings>
+<!--        标准输出日志-->
+<!--        <setting name="logImpl" value="STDOUT_LOGGING"/>-->
+<!--   log4j:
+     1.导入包
+     2.
+     -->
+
+
+        <setting name="logImpl" value="LOG4J"/>
+        
+    </settings>
+    
+<!--    别名设置-->
+    <typeAliases>
+<!--        给一个类设置别名-->
+        <typeAlias type="com.wang.pojo.User" alias="User"></typeAlias>
+<!--        给一个包设置快捷方式，mapper使用的时候，可以直接用类名的小写方式-->
+        <package name="com.wang.pojo"/>
+    </typeAliases>
+
+<!--通过外部资源文件配置,${}方式取值-->
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="${driver}"/>
+                <property name="url" value="${url}"/>
+                <property name="username" value="${username}"/>
+                <property name="password" value="${password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+    <mappers>
+        <mapper resource="com/wang/mapper/UserMapper.xml"/>
+    </mappers>
+</configuration>
